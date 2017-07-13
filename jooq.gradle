@@ -1,0 +1,28 @@
+apply plugin: 'java'
+
+buildscript {
+    repositories {
+        mavenLocal()
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+    }
+
+    dependencies {
+        classpath 'org.jooq:jooq:3.9.1'
+        classpath 'org.jooq:jooq-meta:3.9.1'
+        classpath 'org.jooq:jooq-codegen:3.9.1'
+        classpath 'mysql:mysql-connector-java:5.1.6'
+    }
+}
+
+// jooq code gen, 运行命令: gradle -b jooq.gradle generate --debug -Ddb=${db}
+task generate << {
+    // 输入指定的数据库名 如: userdb, hrdb
+    def dbname = java.lang.System.properties['db']
+    def dbxml = file("jooq/jooqdb.xml")
+    // 读取统一的模板，填充dbname
+    dbxml.filterLine("utf-8") { String text -> if(text.contains("\${db}"))
+        text.replace("\${db}", dbname)
+    }
+    // 调用jooq生成java代码
+    org.jooq.util.GenerationTool.main(org.jooq.util.GenerationTool.load(new FileInputStream(dbxml)))
+}

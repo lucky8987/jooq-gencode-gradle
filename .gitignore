@@ -1,0 +1,86 @@
+# Compiled source #
+###################
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+/classes/
+
+# Packages #
+############
+# it's better to unpack these files and commit the raw source
+# git has its own built in compression methods
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Logs and databases #
+######################
+logs/*
+log/*
+*.log
+service-manager/log/*
+demo-service-provider/log/*
+
+# OS generated files #
+######################
+.DS_Store*
+ehthumbs.db
+Icon?
+Thumbs.db
+
+# Editor Files #
+################
+*~
+*.swp
+
+# Gradle Files #
+################
+.gradle
+.m2
+
+# Build output directies
+/target
+*/target
+/build
+*/build
+/bin
+*/bin
+#
+# # IntelliJ specific files/directories
+
+# IntelliJ specific files/directories
+out
+.idea
+*.ipr
+*.iws
+*.iml
+atlassian-ide-plugin.xml
+
+# Eclipse specific files/directories
+.classpath
+.project
+.settings
+.metadata
+
+# NetBeans specific files/directories
+.nbattrs
+*.log.*
+/WebContent
+/WEB-INF
+
+# debug properties
+common/src/main/resources/*.properties
+rpc-center/src/main/resources/*.properties
+#service-manager/src/main/resources/*.properties
+
+/tmp/
+gen-java/
+baseorm-service-provider/src/main/resources/*.properties
